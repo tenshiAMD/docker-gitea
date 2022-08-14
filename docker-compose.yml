@@ -12,6 +12,13 @@ services:
       - GITEA__indexer__REPO_INDEXER_ENABLED=true
       - GITEA__indexer__REPO_INDEXER_PATH=indexers/repos.bleve
       - GITEA__indexer__UPDATE_BUFFER_LEN=20
+      - GITEA__mailer__ENABLED=true
+      - GITEA__mailer__MAILER_TYPE=smtp
+      - GITEA__mailer__IS_TLS_ENABLED=${GITEA__mailer__IS_TLS_ENABLED:-true}
+      - GITEA__mailer__FROM=${GITEA__mailer__FROM:-GITEA__mailer__FROM not set}
+      - GITEA__mailer__HOST=${GITEA__mailer__HOST:-GITEA__mailer__HOST not set}
+      - GITEA__mailer__USER=${GITEA__mailer__USER:-GITEA__mailer__USER not set}
+      - GITEA__mailer__PASSWD="""${GITEA__mailer__PASSWD:-GITEA__mailer__PASSWD not set}"""
     restart: unless-stopped
     volumes:
       - ${GITEA_DATA_SAVE_PATH:-./data/gitea/data}:/var/lib/gitea
