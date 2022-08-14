@@ -2,7 +2,7 @@ version: "2"
 
 services:
   server:
-    image: gitea/gitea:1.17.0-rootless
+    image: gitea/gitea:${GITEA_IMAGE_VERSION:-1.17.0-rootless}
     environment:
       - GITEA__database__DB_TYPE=mysql
       - GITEA__database__HOST=db:3306
