@@ -20,6 +20,7 @@ services:
       - GITEA__mailer__USER=${GITEA__mailer__USER:-GITEA__mailer__USER not set}
       - GITEA__mailer__PASSWD="""${GITEA__mailer__PASSWD:-GITEA__mailer__PASSWD not set}"""
       - GITEA__server__ROOT_URL=${GITEA__server__ROOT_URL:?GITEA__server__ROOT_URL not set}
+      - GITEA__migrations__ALLOW_LOCALNETWORKS=${GITEA__migrations__ALLOW_LOCALNETWORKS:-false}
     restart: unless-stopped
     volumes:
       - ${DATA_SAVE_PATH:-./data/gitea/data}:/var/lib/gitea
